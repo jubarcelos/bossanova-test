@@ -1,0 +1,113 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './index.html',
+    './src/**/*.{js,jsx,ts,tsx}',
+  ],
+  theme: {
+    fontSize: {
+      et: ['8px', { lineHeight: '10px', letterSpacing: '0.1px' }],
+      es: ['10px', { lineHeight: '12px', letterSpacing: '0.1px' }],
+      sm: ['12px', { lineHeight: '16px', letterSpacing: '0.0px' }],
+      md: ['14px', { lineHeight: '20px', letterSpacing: '0.2px' }],
+      base: ['16px', { lineHeight: '24px', letterSpacing: '0.1px' }],
+      lg: ['18px', { lineHeight: '26px', letterSpacing: '0.0px' }],
+      xl: ['24px', { lineHeight: '32px', letterSpacing: '0.0px' }],
+      '2xl': ['32px', { lineHeight: '40px', letterSpacing: '0.0px' }],
+    },
+    colors: {
+      branding: {
+        primary: '#5A2BE0',
+        secondary: '#8AE3D9',
+        tertiary: '#FB7D55',
+      },
+      primaryScale: {
+        clear: '#F1EEFF',
+        light: '#D3C5FF',
+        regular: '#9670FF',
+        medium: '#7B51F1',
+        dark: '#4505B3',
+      },
+      secondaryScale: {
+        clear: '#ECF8F5',
+        light: '#CCF1ED',
+        regular: '#AEEAE3',
+        medium: '#72D6CA',
+        dark: '#1FB2A2',
+      },
+      tertiaryScale: {
+        clear: '#FFF2EE',
+        light: '#FFD4C6',
+        regular: '#FF9B7B',
+        medium: '#F86131',
+        dark: '#DC3F0D',
+      },
+      greyScale: {
+        white: '#FFFFFF',
+        clear: '#EFF1F8',
+        light: '#BEC4DA',
+        regular: '#697295',
+        medium: '#374063',
+        dark: '#1D2543',
+      },
+      feedback: {
+        lightSuccess: '#E3F8EF',
+        lightWarning: '#FFF3E5',
+        lightDanger: '#FEEBF6',
+        lightInfo: '#E2F5FF',
+        darkSuccess: '#1F9D8E',
+        darkWarning: '#EE7D04',
+        darkDanger: '#D9097F',
+        darkInfo: '#0A7CD2',
+      },
+    },
+    spacing: {
+      0: '0px',
+      1: '2px',
+      2: '4px',
+      3: '8px',
+      4: '10px',
+      5: '12px',
+      6: '16px',
+      7: '20px',
+      8: '24px',
+      9: '32px',
+      10: '40px',
+      11: '48px',
+      12: '60px',
+      13: '64px',
+      14: '74px',
+      15: '84px',
+      16: '94px',
+      17: '112px',
+    },
+    fontFamily: {
+      Inter: ['Inter'],
+    },
+    extend: {
+      fontSize: {
+        dynamic: 'var(--font-size-dynamic)',
+      },
+      boxShadow: {
+        none: 'none',
+        s: '0px 1px 4px 0px rgba(0,0,0, 0.08)',
+        m: '0px 2px 12px 0px rgba(0,0,0, 0.08)',
+        l: '0px 4px 24px 0px rgba(0,0,0, 0.12)',
+      },
+      borderRadius: {
+        none: '0',
+        ti: '4px',
+        sm: '8px',
+        md: '12px',
+        lg: '16px',
+        xl: '24px',
+      },
+      borderWidth: {
+        DEFAULT: '1px',
+      },
+    },
+  },
+  plugins: [
+    require('tailwind-scrollbar'),
+  ],
+};
