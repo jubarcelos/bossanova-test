@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './index.html',
-    './src/**/*.{js,jsx,ts,tsx}',
-  ],
+  content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     fontSize: {
       et: ['8px', { lineHeight: '10px', letterSpacing: '0.1px' }],
@@ -101,13 +98,12 @@ module.exports = {
         md: '12px',
         lg: '16px',
         xl: '24px',
+        xxl: '100%',
       },
       borderWidth: {
         DEFAULT: '1px',
       },
     },
   },
-  plugins: [
-    require('tailwind-scrollbar'),
-  ],
+  plugins: [require('tailwind-scrollbar')],
 };
