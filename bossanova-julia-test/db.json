@@ -1,0 +1,78 @@
+{
+  "beaches": [
+    {
+      "id": "1",
+      "title": "Praia da Lomba do Sabão Campeche",
+      "image": "https://www.guiaviagensbrasil.com/blog/wp-content/uploads/2017/11/piscinas-naturais-da-ilha-do-campeche-SC.jpg"
+    },
+    {
+      "id": "2",
+      "title": "Praia Mole",
+      "image": "https://www.guiaviagensbrasil.com/blog/wp-content/uploads/2017/11/praia-mole-florianopolis.jpg"
+    },
+    {
+      "id": "3",
+      "title": "Praia da Joaquina",
+      "image": "https://www.viagensecaminhos.com/wp-content/uploads/2013/09/praia-joaquina-florianopolis.jpg"
+    },
+    {
+      "id": "4",
+      "title": "Praia dos Ingleses",
+      "image": "https://blackpotrestaurant.com.br/wp-content/uploads/2017/11/praia-dos-ingleses-florianopolis.jpg"
+    },
+    {
+      "id": "5",
+      "title": "Praia de Jurerê",
+      "image": "https://www.viagensecaminhos.com/wp-content/uploads/2013/09/praia-jurere-florianopolis.jpg"
+    },
+    {
+      "id": "6",
+      "title": "Praia da Lagoinha",
+      "image": "https://www.flickr.com/photos/fhmolina/5612936245"
+    },
+    {
+      "id": "7",
+      "title": "Praia do Campeche",
+      "image": "https://www.guiaviagensbrasil.com/blog/wp-content/uploads/2017/11/praia-do-campeche-florianopolis.jpg"
+    },
+    {
+      "id": "8",
+      "title": "Praia da Armação",
+      "image": "https://www.viajali.com.br/wp-content/uploads/2017/11/praia-da-armacao-florianopolis.jpg"
+    },
+    {
+      "id": "9",
+      "title": "Praia do Matadeiro",
+      "views": 200,
+      "image": "https://tourb.com.br/img/lugares/florianopolis/praia-do-matadeiro-2.jpg"
+    },
+    {
+      "id": "10",
+      "title": "Ilha do Campeche",
+      "image": "https://www.guiaviagensbrasil.com/blog/wp-content/uploads/2017/11/ilha-do-campeche-florianopolis.jpg"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "Que LUGAR top, vale o rolê!",
+      "postId": "10",
+      "user": "Carlos"
+    },
+    {
+      "id": "2",
+      "text": "Essa é a melhor do campeche de certeza",
+      "postId": "1",
+      "user": "Amanda"
+    },
+    { "id": "3", "text": "Esse é meu quintal", "postId": "1", "user": "Julia" },
+    {
+      "id": "4",
+      "text": "Vai dar pesca hoje?",
+      "postId": "8",
+      "user": "Alfredo"
+    },
+    { "id": "5", "text": "Lombizera", "postId": "1", "user": "Felipe" },
+    { "id": "6", "text": "surf bomm", "postId": "1", "user": "Alice" }
+  ]
+}
