@@ -76,13 +76,13 @@ const AddBeach: React.FC<AddBeachProps> = ({ onAddBeach, isOpen, onClose }) => {
   const handleSubmit = async (): Promise<void> => {
     setIsSubmitting(true);
     try {
-      const newBeachWithId = { ...newBeach, id: crypto.randomUUID() }; // Crie um ID único
+      const newBeachWithId = { ...newBeach, id: crypto.randomUUID() };
       const status = await createBeach(newBeachWithId);
 
       if (status === 201) {
-        onAddBeach(newBeachWithId); // Atualiza a lista no componente pai
-        setNewBeach({ title: '', image: '', location: { link: '' }, description: '' }); // Limpa o formulário
-        onClose(); // Fecha o modal
+        onAddBeach(newBeachWithId);
+        setNewBeach({ title: '', image: '', location: { link: '' }, description: '' });
+        onClose();
       } else {
         console.error('Erro ao adicionar a praia.');
       }
