@@ -24,6 +24,29 @@ export const getBeaches = async (): Promise<Beach[]> => {
   }
 };
 
+export const fetchBeachesWithFilters = async (filters: {
+  [key: string]: string;
+}): Promise<Beach[] | undefined> => {
+  try {
+    if (filters.title_like) {
+      filters.title_like = filters.title_like.toLowerCase();
+
+      const response = await axios.get(`${API_URL}/`, {
+        params: filters,
+      });
+
+      const filteredBeaches = response.data.filter((beach: Beach) =>
+        beach.title.toLowerCase().includes(filters.title_like || ''),
+      );
+
+      return filteredBeaches;
+    }
+  } catch (error) {
+    console.error('Erro ao buscar praias:', error);
+    throw error;
+  }
+};
+
 export const createBeach = async (newBeach: Beach): Promise<number> => {
   try {
     const response = await axios.post<Beach>(API_URL, newBeach);
