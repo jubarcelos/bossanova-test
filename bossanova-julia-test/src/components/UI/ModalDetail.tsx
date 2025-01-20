@@ -38,17 +38,14 @@ const ModalDetail: React.FC<ModalDetailProps> = ({ isOpen, item, onClose }) => {
   }
 
   const handleEditClick = (): void => {
-    console.log('Fechando ModalDetail e abrindo ModalEdit...');
     setIsEditModalOpen(true);
   };
 
   const handleEditModalClose = (): void => {
-    console.log('Fechando ModalEdit...');
     setIsEditModalOpen(false);
   };
 
   const handleSave = (updatedItem: Beach): void => {
-    console.log('Item atualizado:', updatedItem);
     setIsEditModalOpen(false);
   };
 
@@ -68,12 +65,11 @@ const ModalDetail: React.FC<ModalDetailProps> = ({ isOpen, item, onClose }) => {
           onClickButtonTwo={() => window.open(item.location.link, '_blank')}
         >
           <div className={internalColumnSpace()}>
-            <img src={item.image} alt={item.title} className="modal-image" />
+            <img src={item.image} alt={item.title} />
             <p className={body()}>{item.description}</p>
           </div>
         </Modal>
       </div>
-      {isEditModalOpen && console.log(isEditModalOpen)}
       {isEditModalOpen && (
         <ModalEdit
           isOpen={isEditModalOpen}
