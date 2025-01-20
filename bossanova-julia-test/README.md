@@ -6,19 +6,15 @@ First of all start the project:
 yarn install
 ```
 
-## How run in DEV mode?
+## How access DB endpoints?
 
 ```sh
-yarn dev
+npx json-server db.json --port 5050
 ```
 
-## How run in DEV mode?
+You can access: https://www.npmjs.com/package/json-server to now more about the tool.
 
-```sh
-yarn dev
-```
-
-## How run in DEV mode?
+## How run in front-end DEV mode?
 
 ```sh
 yarn dev
@@ -36,72 +32,17 @@ To fix lint problems:
 yarn lint:fix
 ```
 
-## How run in PROD mode?
+## How to format?
 
 ```sh
-yarn build
+yarn format
 ```
 
-## How deploy?
+Remember to format before ever commit.
+
+
+## How access Backend ?
 
 ```sh
-npx vercel ./dist --prod
-```
-
-## How open in vercel?
-
-https://bossanova-test-julia-arxoxpwpe-jubarcelos-projects.vercel.app 
-
-
-
-
-
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+npx json-server db.json --port 5050
 ```

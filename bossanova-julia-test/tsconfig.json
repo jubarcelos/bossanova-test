@@ -13,13 +13,15 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": false,  // Alterado para permitir a geração de arquivos JavaScript
+    "noEmit": false, 
     "jsx": "react-jsx",
     "types": ["react", "react-dom"],
-    "typeRoots": ["./node_modules/@types", "server/types"]
+    "typeRoots": ["./node_modules/@types", "server/types"],
+    "outDir": "./dist",  // Adiciona a pasta de saída dos arquivos compilados
+    "rootDir": "./",     // Indica que o TypeScript deve considerar o diretório raiz para os arquivos de entrada
   },
   "include": [
-    "src",            // Mantém a compilação do front
-    "server/**/*.ts"  // Adiciona a compilação dos arquivos TypeScript na pasta 'server'
+    "src",             // Mantém a compilação do front
+    "server/**/*.ts"   // Compila os arquivos TypeScript do back-end
   ]
 }
