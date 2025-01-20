@@ -6,6 +6,7 @@ import Icon from '../UI/Icon';
 import ModalAdd from '../UI/ModalAdd';
 import { useAtom } from 'jotai';
 import { beachesAtom } from '../../atoms';
+import SearchBeach from '../UI/ModalSearch';
 
 export type OmitBeach = Omit<Beach, 'id' | 'description' | 'image'>;
 
@@ -32,6 +33,7 @@ const { headerStyle, menuStyle, imageStyle, navStyle, ulStyle, buttonStyle } = s
 const Header: React.FC = () => {
   const { pathname } = useLocation();
   const [isAddBeachFormOpen, setIsAddBeachFormOpen] = useState(false);
+  const [isSearchBeachOpen, setIsSearchBeachOpen] = useState(false);
   const [beaches, setBeaches] = useAtom(beachesAtom);
 
   const handleAddBeach = (newBeach: Beach): void => {
@@ -68,7 +70,7 @@ const Header: React.FC = () => {
           </nav>
         </div>
         <div className="flex gap-4 justify-end p-5">
-          <button className={buttonStyle()}>
+          <button className={buttonStyle()} onClick={() => setIsSearchBeachOpen(true)}>
             Procurar praia
             <Icon size={'20'} iconName={'RiSearchLine'} />
           </button>
@@ -77,6 +79,7 @@ const Header: React.FC = () => {
           </button>
         </div>
       </header>
+
       {isAddBeachFormOpen && (
         <ModalAdd
           isOpen={isAddBeachFormOpen}
@@ -84,6 +87,9 @@ const Header: React.FC = () => {
           onAddBeach={handleAddBeach}
         />
       )}
+
+      {/* Modal de busca de praias */}
+      <SearchBeach isOpen={isSearchBeachOpen} onClose={() => setIsSearchBeachOpen(false)} />
     </>
   );
 };
