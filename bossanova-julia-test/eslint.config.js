@@ -25,7 +25,14 @@ const config = [
       prettier: pluginPrettier,
     },
     rules: {
-      'prettier/prettier': 'error', // Integra Prettier
+      'prettier/prettier': [
+        'error',
+        {
+          printWidth: 100, // Controla o limite da linha
+          tabWidth: 2, // Indentação de 2 espaços
+          singleQuote: true, // Usar aspas simples
+        },
+      ], // Integra Prettier
       indent: ['error', 2], // Recuo de 2 espaços
       'eol-last': ['error', 'always'], // Linha em branco ao final
       curly: ['error', 'all'], // Chaves obrigatórias
@@ -39,6 +46,7 @@ const config = [
         'warn',
         { allowExpressions: true }, // Permitir expressões sem tipo explícito
       ],
+      'max-len': ['error', { code: 100, ignoreStrings: true, ignoreTemplateLiterals: true }],
     },
   },
 ];
