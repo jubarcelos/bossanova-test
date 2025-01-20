@@ -9,8 +9,6 @@ const Router: React.FC = () => {
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/login" element={<Login />} />
-        {/* <Route path="/error" element={<ErrorPage />} /> */}
-        {/* <Route path="*" element={<NotFoundPage />} /> */}
       </Routes>
     </BrowserRouter>
   );

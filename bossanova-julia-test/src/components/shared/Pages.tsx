@@ -28,8 +28,7 @@ const Page: React.FC<PageProps> = ({
 }) => {
   return (
     <>
-      {header ? <Header showNav={showHeaderNav} /> : null}
-
+      <Header />
       <main className={pageClass({ class: className, header })}>{children}</main>
       <Footer />
     </>
