@@ -3,76 +3,92 @@
     {
       "id": "1",
       "title": "Praia da Lomba do Sabão Campeche",
-      "image": "https://www.guiaviagensbrasil.com/blog/wp-content/uploads/2017/11/piscinas-naturais-da-ilha-do-campeche-SC.jpg"
+      "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/488247187.jpg?k=714030a8414a4504aca6612850459d6b759b453e31419b2df002152ffd94cdc8&o=&hp=1",
+      "location": {
+        "link": "https://www.google.com/maps?q=Praia+da+Lomba+do+Sabão+Campeche,+Florianópolis,+SC"
+      },
+      "description": "A Praia da Lomba do Sabão é uma das mais conhecidas do Campeche, localizada na Ilha de Santa Catarina, com águas calmas e paisagens deslumbrantes."
     },
     {
       "id": "2",
       "title": "Praia Mole",
-      "image": "https://www.guiaviagensbrasil.com/blog/wp-content/uploads/2017/11/praia-mole-florianopolis.jpg"
+      "image": "https://destinoflorianopolis.com.br/wp-content/uploads/2016/07/Praia-Mole.jpg",
+      "location": {
+        "link": "https://www.google.com/maps?q=Praia+Mole,+Florianópolis,+SC"
+      },
+      "description": "A Praia Mole é famosa por suas águas claras e ondas fortes, sendo um ponto de encontro para surfistas e turistas em Florianópolis."
     },
     {
       "id": "3",
       "title": "Praia da Joaquina",
-      "image": "https://www.viagensecaminhos.com/wp-content/uploads/2013/09/praia-joaquina-florianopolis.jpg"
+      "image": "https://ilhadamagiaonline.com.br/wp-content/uploads/2023/12/praia-da-joaquina.webp",
+      "location": {
+        "link": "https://www.google.com/maps?q=Praia+da+Joaquina,+Florianópolis,+SC"
+      },
+      "description": "A Praia da Joaquina é famosa mundialmente por suas ondas e é considerada um dos melhores lugares para surfe em Florianópolis."
     },
     {
       "id": "4",
-      "title": "Praia dos Ingleses",
-      "image": "https://blackpotrestaurant.com.br/wp-content/uploads/2017/11/praia-dos-ingleses-florianopolis.jpg"
+      "title": "Praia do Forte",
+      "image": "https://tourb.com.br/img/lugares/florianopolis/praia-do-forte.jpg",
+      "location": {
+        "link": "https://www.google.com/maps?q=Praia+do+Forte,+Florianópolis,+SC"
+      },
+      "description": "A Praia dos Ingleses é uma das mais movimentadas de Florianópolis, com uma grande infraestrutura para turistas e excelente para banhos de sol e mar."
     },
     {
       "id": "5",
       "title": "Praia de Jurerê",
-      "image": "https://www.viagensecaminhos.com/wp-content/uploads/2013/09/praia-jurere-florianopolis.jpg"
+      "image": "https://www.dicasdonossobrasil.com.br/wp-content/uploads/2018/03/Jurer%C3%AA-internacional-beach-3.jpg",
+      "location": {
+        "link": "https://www.google.com/maps?q=Praia+de+Jurerê,+Florianópolis,+SC"
+      },
+      "description": "Jurerê é conhecida por seu alto padrão e beleza exuberante, sendo famosa por suas festas e águas calmas, ideal para passeios de barco."
     },
     {
       "id": "6",
       "title": "Praia da Lagoinha",
-      "image": "https://www.flickr.com/photos/fhmolina/5612936245"
+      "image": "https://suldefloripa.com.br/wp-content/uploads/2023/10/Suldefloripa-trilha-da-lagoinha-do-leste21-scaled.webp",
+      "location": {
+        "link": "https://www.google.com/maps?q=Praia+da+Lagoinha,+Florianópolis,+SC"
+      },
+      "description": "A Praia da Lagoinha é tranquila e de fácil acesso, com águas claras e uma ótima opção para quem busca paz e sossego em Florianópolis."
     },
     {
       "id": "7",
       "title": "Praia do Campeche",
-      "image": "https://www.guiaviagensbrasil.com/blog/wp-content/uploads/2017/11/praia-do-campeche-florianopolis.jpg"
+      "image": "https://f1ciaimobiliaria.com.br/wp-content/uploads/2022/12/campeche-praia.jpg",
+      "location": {
+        "link": "https://www.google.com/maps?q=Praia+do+Campeche,+Florianópolis,+SC"
+      },
+      "description": "A Praia do Campeche é famosa por sua larga faixa de areia e ondas fortes, sendo excelente para a prática de surfe."
     },
     {
       "id": "8",
       "title": "Praia da Armação",
-      "image": "https://www.viajali.com.br/wp-content/uploads/2017/11/praia-da-armacao-florianopolis.jpg"
+      "image": "https://www.guiaviagensbrasil.com/imagens/pedras-praia-armacao-florianopolis.jpg",
+      "location": {
+        "link": "https://www.google.com/maps?q=Praia+da+Armação,+Florianópolis,+SC"
+      },
+      "description": "A Praia da Armação é um lugar tranquilo, com águas claras e calmas, ideal para famílias e quem busca um ambiente mais sossegado."
     },
     {
       "id": "9",
       "title": "Praia do Matadeiro",
-      "views": 200,
-      "image": "https://tourb.com.br/img/lugares/florianopolis/praia-do-matadeiro-2.jpg"
+      "image": "https://tourb.com.br/img/lugares/florianopolis/praia-do-matadeiro-2.jpg",
+      "location": {
+        "link": "https://www.google.com/maps?q=Praia+do+Matadeiro,+Florianópolis,+SC"
+      },
+      "description": "A Praia do Matadeiro é uma das mais isoladas e preservadas de Florianópolis, com um visual rústico e natureza exuberante."
     },
     {
       "id": "10",
       "title": "Ilha do Campeche",
-      "image": "https://www.guiaviagensbrasil.com/blog/wp-content/uploads/2017/11/ilha-do-campeche-florianopolis.jpg"
+      "image": "https://www.guiaviagensbrasil.com/blog/wp-content/uploads/2017/11/piscinas-naturais-da-ilha-do-campeche-SC.jpg",
+      "location": {
+        "link": "https://www.google.com/maps?q=Ilha+do+Campeche,+Florianópolis,+SC"
+      },
+      "description": "A Ilha do Campeche é uma área de preservação ambiental com águas cristalinas e uma rica fauna marinha, ideal para passeios e mergulhos."
     }
-  ],
-  "comments": [
-    {
-      "id": "1",
-      "text": "Que LUGAR top, vale o rolê!",
-      "postId": "10",
-      "user": "Carlos"
-    },
-    {
-      "id": "2",
-      "text": "Essa é a melhor do campeche de certeza",
-      "postId": "1",
-      "user": "Amanda"
-    },
-    { "id": "3", "text": "Esse é meu quintal", "postId": "1", "user": "Julia" },
-    {
-      "id": "4",
-      "text": "Vai dar pesca hoje?",
-      "postId": "8",
-      "user": "Alfredo"
-    },
-    { "id": "5", "text": "Lombizera", "postId": "1", "user": "Felipe" },
-    { "id": "6", "text": "surf bomm", "postId": "1", "user": "Alice" }
   ]
 }
