@@ -13,11 +13,13 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
+    "noEmit": false,  // Alterado para permitir a geração de arquivos JavaScript
     "jsx": "react-jsx",
     "types": ["react", "react-dom"],
     "typeRoots": ["./node_modules/@types", "server/types"]
   },
-  "include": ["src", "server"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "src",            // Mantém a compilação do front
+    "server/**/*.ts"  // Adiciona a compilação dos arquivos TypeScript na pasta 'server'
+  ]
 }

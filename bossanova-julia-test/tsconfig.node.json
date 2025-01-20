@@ -1,10 +1,16 @@
 {
   "compilerOptions": {
     "composite": true,
-    "module": "ESNext",
-    "skipLibCheck": true,
+    "module": "CommonJS", // Alterado para compatibilidade com Node.js
+    "target": "ESNext",
     "moduleResolution": "Node",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "esModuleInterop": true, // Habilita interoperabilidade entre CommonJS e ESM
+    "outDir": "dist", // Define um diretório para saída compilada
+    "rootDir": "./server", // Define a pasta raiz dos arquivos TypeScript
+    "skipLibCheck": true // Mantém a checagem de tipos de libs desabilitada
   },
-  "include": ["vite.config.ts"]
+  "include": ["server/**/*"], // Inclui todos os arquivos dentro da pasta server
+  "exclude": ["node_modules", "dist"] // Exclui node_modules e a saída compilada
 }
