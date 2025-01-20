@@ -20,17 +20,17 @@ const containerStyle = tv({
     },
   },
 });
-const styles = tv({
+
+export const styles = tv({
   base: 'text-grayScale-light text-base',
   slots: {
-    internalColumnSpace: 'flex flex-col gap-2 bg-greyScale-clear',
     inputStyle: 'px-3 py-1 w-[600px] bg-greyScale-clear rounded-sm',
     textAreaStyle: 'px-3 py-1 w-[600px] bg-greyScale-clear rounded-sm',
     inputContainer: 'flex flex-col gap-3 justify-center items-center bg-greyScale-white',
   },
 });
 
-const { internalColumnSpace, inputStyle, textAreaStyle, inputContainer } = styles();
+const { inputStyle, textAreaStyle, inputContainer } = styles();
 
 const AddBeach: React.FC<AddBeachProps> = ({ onAddBeach, isOpen, onClose }) => {
   const [newBeach, setNewBeach] = useState<Omit<Beach, 'id'>>({

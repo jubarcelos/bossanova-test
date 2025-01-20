@@ -3,6 +3,8 @@ import { Beach, updateBeach } from '../../axios';
 import Modal from '../shared/Modal';
 import { ModalButtonVariants } from '../../constants/Enum/ModalButtonVariants';
 import { SizeVariant } from '../../constants/Enum/SizeVariant';
+import { tv } from 'tailwind-variants';
+import { styles } from './ModalAdd';
 
 export interface EditBeachProps {
   isOpen: boolean;
@@ -10,6 +12,16 @@ export interface EditBeachProps {
   onClose: () => void;
   onSave: (updatedBeach: Beach) => void;
 }
+
+const containerStyle = tv({
+  base: 'fixed z-30 bg-greyScale-white bg-opacity-60 w-full h-full top-0 left-0 py-10 justify-center overflow-y-auto',
+  variants: {
+    isOpen: {
+      true: 'flex',
+      false: 'hidden',
+    },
+  },
+});
 
 const ModalEdit: React.FC<EditBeachProps> = ({ isOpen, item, onClose, onSave }) => {
   const [editedBeach, setEditedBeach] = useState<Beach | null>(null);
@@ -32,6 +44,7 @@ const ModalEdit: React.FC<EditBeachProps> = ({ isOpen, item, onClose, onSave }) 
   if (!isOpen || !editedBeach) {
     return null;
   }
+  const { inputStyle, textAreaStyle, inputContainer } = styles();
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -79,52 +92,55 @@ const ModalEdit: React.FC<EditBeachProps> = ({ isOpen, item, onClose, onSave }) 
   };
 
   return (
-    <Modal
-      onClose={onClose}
-      modalTitle="Editar Praia"
-      buttonLabelOne="Salvar"
-      buttonLabelTwo="Cancelar"
-      onClickButtonOne={handleSave}
-      onClickButtonTwo={onClose}
-      disableButtonOne={!isFormValid() || isSubmitting}
-      buttonType={ModalButtonVariants.TWO}
-      size={SizeVariant.MEDIUM}
-    >
-      <div className="p-4 space-y-4">
-        <input
-          type="text"
-          name="title"
-          placeholder="Título da Praia"
-          value={editedBeach.title}
-          onChange={handleInputChange}
-          className="input-field"
-        />
-        <input
-          type="text"
-          name="image"
-          placeholder="URL da Imagem"
-          value={editedBeach.image}
-          onChange={handleInputChange}
-          className="input-field"
-        />
-        <input
-          type="text"
-          name="link"
-          placeholder="Link do Local (Google Maps)"
-          value={editedBeach.location.link}
-          onChange={handleInputChange}
-          className="input-field"
-        />
-        <textarea
-          name="description"
-          placeholder="Descrição da Praia"
-          value={editedBeach.description}
-          onChange={handleInputChange}
-          className="textarea-field"
-        />
-        {feedbackMessage && <p className="text-center text-sm text-red-500">{feedbackMessage}</p>}
-      </div>
-    </Modal>
+    <div className={containerStyle({ isOpen })}>
+      <Modal
+        onClose={onClose}
+        modalTitle="Editar Praia"
+        modalSubtitle="Aqui estão apresentadas as informações atuais, edite como preferir"
+        buttonLabelOne="Salvar"
+        buttonLabelTwo="Cancelar"
+        onClickButtonOne={handleSave}
+        onClickButtonTwo={onClose}
+        disableButtonOne={!isFormValid() || isSubmitting}
+        buttonType={ModalButtonVariants.TWO}
+        size={SizeVariant.MEDIUM}
+      >
+        <div className={inputContainer()}>
+          <input
+            type="text"
+            name="title"
+            placeholder="Nome da Praia"
+            value={editedBeach.title}
+            onChange={handleInputChange}
+            className={inputStyle()}
+          />
+          <input
+            type="text"
+            name="image"
+            placeholder="Uma imagem, em URL"
+            value={editedBeach.image}
+            onChange={handleInputChange}
+            className={inputStyle()}
+          />
+          <input
+            type="text"
+            name="link"
+            placeholder="Link do Local (Google Maps)"
+            value={editedBeach.location.link}
+            onChange={handleInputChange}
+            className={inputStyle()}
+          />
+          <textarea
+            name="description"
+            placeholder="Descrição do que te agrada essa praia"
+            value={editedBeach.description}
+            onChange={handleInputChange}
+            className={textAreaStyle()}
+          />
+          {feedbackMessage && <p className="text-center text-sm text-red-500">{feedbackMessage}</p>}
+        </div>
+      </Modal>
+    </div>
   );
 };
 

@@ -43,6 +43,7 @@ const ModalDetail: React.FC<ModalDetailProps> = ({ isOpen, item, onClose }) => {
 
   const handleEditModalClose = (): void => {
     setIsEditModalOpen(false);
+    onClose();
   };
 
   const handleSave = (updatedItem: Beach): void => {
