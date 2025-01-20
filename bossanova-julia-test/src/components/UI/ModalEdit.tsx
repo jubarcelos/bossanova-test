@@ -5,6 +5,9 @@ import { ModalButtonVariants } from '../../constants/Enum/ModalButtonVariants';
 import { SizeVariant } from '../../constants/Enum/SizeVariant';
 import { tv } from 'tailwind-variants';
 import { styles } from './ModalAdd';
+import { stylesDetails } from './ModalDetail';
+import { useAtom } from 'jotai';
+import { beachesAtom } from '../../atoms';
 
 export interface EditBeachProps {
   isOpen: boolean;
@@ -24,6 +27,7 @@ const containerStyle = tv({
 });
 
 const ModalEdit: React.FC<EditBeachProps> = ({ isOpen, item, onClose, onSave }) => {
+  const [beaches, setBeaches] = useAtom(beachesAtom);
   const [editedBeach, setEditedBeach] = useState<Beach | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
@@ -45,6 +49,7 @@ const ModalEdit: React.FC<EditBeachProps> = ({ isOpen, item, onClose, onSave }) 
     return null;
   }
   const { inputStyle, textAreaStyle, inputContainer } = styles();
+  const { internalColumnSpace, body } = stylesDetails();
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -70,6 +75,10 @@ const ModalEdit: React.FC<EditBeachProps> = ({ isOpen, item, onClose, onSave }) 
       const status = await updateBeach(editedBeach);
       if (status === 200) {
         setFeedbackMessage('Praia atualizada com sucesso!');
+        // Atualizar o estado global com a praia editada
+        setBeaches((prevBeaches: Beach[]) =>
+          prevBeaches.map((beach) => (beach.id === editedBeach.id ? editedBeach : beach)),
+        );
         onSave(editedBeach);
         onClose();
       } else {
@@ -105,39 +114,47 @@ const ModalEdit: React.FC<EditBeachProps> = ({ isOpen, item, onClose, onSave }) 
         buttonType={ModalButtonVariants.TWO}
         size={SizeVariant.MEDIUM}
       >
-        <div className={inputContainer()}>
-          <input
-            type="text"
-            name="title"
-            placeholder="Nome da Praia"
-            value={editedBeach.title}
-            onChange={handleInputChange}
-            className={inputStyle()}
-          />
-          <input
-            type="text"
-            name="image"
-            placeholder="Uma imagem, em URL"
-            value={editedBeach.image}
-            onChange={handleInputChange}
-            className={inputStyle()}
-          />
-          <input
-            type="text"
-            name="link"
-            placeholder="Link do Local (Google Maps)"
-            value={editedBeach.location.link}
-            onChange={handleInputChange}
-            className={inputStyle()}
-          />
-          <textarea
-            name="description"
-            placeholder="Descrição do que te agrada essa praia"
-            value={editedBeach.description}
-            onChange={handleInputChange}
-            className={textAreaStyle()}
-          />
-          {feedbackMessage && <p className="text-center text-sm text-red-500">{feedbackMessage}</p>}
+        <div className="flex flex-col gap-4 bg-greyScale-white">
+          <div className={internalColumnSpace()}>
+            <img src={item.image} alt={item.title} />
+            <p className={body()}>{item.description}</p>
+          </div>
+          <div className={inputContainer()}>
+            <input
+              type="text"
+              name="title"
+              placeholder="Nome da Praia"
+              value={editedBeach.title}
+              onChange={handleInputChange}
+              className={inputStyle()}
+            />
+            <input
+              type="text"
+              name="image"
+              placeholder="Uma imagem, em URL"
+              value={editedBeach.image}
+              onChange={handleInputChange}
+              className={inputStyle()}
+            />
+            <input
+              type="text"
+              name="link"
+              placeholder="Link do Local (Google Maps)"
+              value={editedBeach.location.link}
+              onChange={handleInputChange}
+              className={inputStyle()}
+            />
+            <textarea
+              name="description"
+              placeholder="Descrição do que te agrada essa praia"
+              value={editedBeach.description}
+              onChange={handleInputChange}
+              className={textAreaStyle()}
+            />
+            {feedbackMessage && (
+              <p className="text-center text-sm text-red-500">{feedbackMessage}</p>
+            )}
+          </div>
         </div>
       </Modal>
     </div>

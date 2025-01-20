@@ -24,6 +24,7 @@ const containerStyle = tv({
 export const styles = tv({
   base: 'text-grayScale-light text-base',
   slots: {
+    internalColumnSpace: 'flex flex-col gap-2 bg-greyScale-clear',
     inputStyle: 'px-3 py-1 w-[600px] bg-greyScale-clear rounded-sm',
     textAreaStyle: 'px-3 py-1 w-[600px] bg-greyScale-clear rounded-sm',
     inputContainer: 'flex flex-col gap-3 justify-center items-center bg-greyScale-white',
@@ -40,7 +41,15 @@ const AddBeach: React.FC<AddBeachProps> = ({ onAddBeach, isOpen, onClose }) => {
     description: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
+
+  const isValidUrl = (url: string): boolean => {
+    try {
+      new URL(url);
+      return true;
+    } catch {
+      return false;
+    }
+  };
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -57,26 +66,28 @@ const AddBeach: React.FC<AddBeachProps> = ({ onAddBeach, isOpen, onClose }) => {
     return (
       newBeach.title.trim() !== '' &&
       newBeach.image.trim() !== '' &&
+      isValidUrl(newBeach.image) &&
       newBeach.location.link.trim() !== '' &&
+      isValidUrl(newBeach.location.link) &&
       newBeach.description.trim() !== ''
     );
   };
 
   const handleSubmit = async (): Promise<void> => {
     setIsSubmitting(true);
-    setFeedbackMessage(null);
-
     try {
-      const status = await createBeach({ ...newBeach, id: crypto.randomUUID() });
+      const newBeachWithId = { ...newBeach, id: crypto.randomUUID() }; // Crie um ID único
+      const status = await createBeach(newBeachWithId);
+
       if (status === 201) {
-        setFeedbackMessage('Praia adicionada com sucesso!');
-        setNewBeach({ title: '', image: '', location: { link: '' }, description: '' });
-        onClose(); // Fecha o modal após a adição
+        onAddBeach(newBeachWithId); // Atualiza a lista no componente pai
+        setNewBeach({ title: '', image: '', location: { link: '' }, description: '' }); // Limpa o formulário
+        onClose(); // Fecha o modal
       } else {
-        setFeedbackMessage('Erro ao adicionar a praia. Tente novamente.');
+        console.error('Erro ao adicionar a praia.');
       }
     } catch (error) {
-      setFeedbackMessage('Erro inesperado ao adicionar a praia.');
+      console.error('Erro inesperado ao adicionar a praia.', error);
     } finally {
       setIsSubmitting(false);
     }
@@ -128,7 +139,6 @@ const AddBeach: React.FC<AddBeachProps> = ({ onAddBeach, isOpen, onClose }) => {
             onChange={handleInputChange}
             className={textAreaStyle()}
           />
-          {feedbackMessage && <p className="text-center text-sm text-red-500">{feedbackMessage}</p>}
         </div>
       </Modal>
     </div>

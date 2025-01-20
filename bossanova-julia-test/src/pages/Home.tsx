@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { tv } from 'tailwind-variants';
 import Page from '../components/shared/Pages';
-import FeedbackCommunication from '../components/shared/FeedbackCommunication';
 import CardImage from '../components/UI/CardImage';
-import { Beach, getBeaches } from '../axios';
 import ModalDetail, { ModalDetailProps } from '../components/UI/ModalDetail';
-import AddBeach from '../components/UI/ModalAdd';
 import ModalAdd from '../components/UI/ModalAdd';
-import ModalEdit from '../components/UI/ModalEdit';
+import { useAtom } from 'jotai';
+import { beachesAtom, addBeachAtom } from '../atoms';
+import { Beach, getBeaches } from '../axios';
 
 const styles = tv({
   slots: {
@@ -22,25 +21,24 @@ const styles = tv({
 const { pageStyle, containerStyle, beachesContainer, buttonStyle } = styles();
 
 const Home: React.FC = () => {
-  const [beaches, setBeaches] = useState<Beach[]>([]);
-  const [error, setError] = useState<string | null>(null);
+  const [beaches, setBeaches] = useAtom(beachesAtom);
+  const [, addBeach] = useAtom(addBeachAtom);
   const [selectedBeach, setSelectedBeach] = useState<ModalDetailProps['item'] | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAddBeachFormOpen, setIsAddBeachFormOpen] = useState(false);
-  const [newBeach, setNewBeach] = useState<Beach | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchBeaches = async (): Promise<void> => {
+    const fetchBeaches = async () => {
       try {
         const data = await getBeaches();
         setBeaches(data);
-      } catch (err) {
+      } catch {
         setError('Erro ao carregar as praias.');
       }
     };
-
     fetchBeaches();
-  }, []);
+  }, [setBeaches]);
 
   const handleCardClick = (beach: ModalDetailProps['item']): void => {
     setSelectedBeach(beach);
@@ -52,25 +50,16 @@ const Home: React.FC = () => {
     setSelectedBeach(null);
   };
 
-  const handleCloseModalAdd = (): void => {
+  const handleAddBeach = (newBeach: Beach): void => {
+    addBeach(newBeach);
     setIsAddBeachFormOpen(false);
-  };
-
-  const handleAddBeach = (): void => {
-    if (newBeach) {
-      setBeaches((prevBeaches) => [...prevBeaches, newBeach]);
-      setIsAddBeachFormOpen(false);
-      setNewBeach(null);
-    } else {
-      console.error('Tentativa de adicionar uma praia inválida.');
-    }
   };
 
   return (
     <div className={containerStyle()}>
       <Page className={pageStyle()}>
         <div className={beachesContainer()}>
-          {beaches.map((beach) => (
+          {beaches.map((beach: Beach) => (
             <CardImage
               key={beach.id}
               img={beach.image}
@@ -88,29 +77,12 @@ const Home: React.FC = () => {
         {isAddBeachFormOpen && (
           <ModalAdd
             isOpen={isAddBeachFormOpen}
-            onClose={handleCloseModalAdd}
+            onClose={() => setIsAddBeachFormOpen(false)}
             onAddBeach={handleAddBeach}
           />
         )}
-        {newBeach && <FeedbackCommunication.Success text="Praia incluída!" />}
-        {error && <FeedbackCommunication.Error title="Erro" text={error} />}
+        {error && <div className="text-red-500 text-center">{error}</div>}
       </Page>
-      {/* {isSuccessAddedBeach === null ? null : isSuccessAddedBeach ? (
-        <FeedbackCommunication.Success text="Praia incluída!" />
-      ) : (
-        <FeedbackCommunication.Error
-          title="Erro ao adicionar nova praia"
-          text="Tente novamente mais tarde."
-        />
-      )}
-      {isSuccessUpdatedBeach === null ? null : isSuccessUpdatedBeach ? (
-        <FeedbackCommunication.Success text="Praia incluída!" />
-      ) : (
-        <FeedbackCommunication.Error
-          title="Erro ao adicionar nova praia"
-          text="Tente novamente mais tarde."
-        />
-      )} */}
     </div>
   );
 };

@@ -21,14 +21,15 @@ const containerStyle = tv({
     },
   },
 });
-const styles = tv({
+
+export const stylesDetails = tv({
   slots: {
     internalColumnSpace: 'flex flex-col gap-2 bg-greyScale-clear',
     body: 'flex justify-center items-center text-grayScale-light bg-greyScale-clear border-greyScale-white text-base mx-6 my-6',
   },
 });
 
-const { internalColumnSpace, body } = styles();
+const { internalColumnSpace, body } = stylesDetails();
 
 const ModalDetail: React.FC<ModalDetailProps> = ({ isOpen, item, onClose }) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
